@@ -9,6 +9,15 @@ if (!isset($_SESSION['username'])) {
 }
 $username = $_SESSION['username'];
 
+try {
+    $conn = new PDO('mysql:host=localhost;dbname=mydb', "root", "");
+} catch (PDOException $e) {
+    print "Error : " . $e->getMessage() . "<br/>";
+    die();
+}
+
+//Connected successfully
+
 ?>
 
 <html lang="en">
@@ -57,13 +66,48 @@ $username = $_SESSION['username'];
             <div class="col s6 center-align">
                 <h3>Personnal data</h3>
                 <div class="row">
-
+                    <?php
+                    $query = "SELECT * FROM user WHERE username='$username'";
+                    $result = $conn->query($query);
+                    $data = $result->fetch();
+                    echo "First Name : " . $data['first_name'] . "<br/>";
+                    echo "Last Name : " . $data['last_name'] . "<br/>";
+                    echo "Email : " . $data['email'] . "<br/>";
+                    echo "Number: " . $data['number'] . "<br/>";
+                    echo "Username: " . $data['username'] . "<br/>";
+                    ?>
                 </div>
             </div>
             <div class="col s6 center-align">
                 <h3>You may want to be friend with...</h3>
                 <div class="row">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Add as friend</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
+                        <?php
+                        $query = "SELECT * FROM user";
+                        $result = $conn->query($query);
+                        $users = $result->fetchAll();
+                        foreach ($users as $user) {
+                            echo "<tr>";
+                            echo "<td>" . $user['first_name'] . "</td>";
+                            echo "<td>" . $user['username'] . "</td>";
+                            echo "<td><button class=\"btn waves-effect waves-light\" name=\"action\" 
+                                    onclick=\"M.toast({html: 'This functionnality is beyond the project area'})\">Add
+                            </button></td>";
+                            echo "</tr>";
+                        }
+                        ?>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
