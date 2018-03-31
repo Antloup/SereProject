@@ -92,7 +92,7 @@ try {
                         <tbody>
 
                         <?php
-                        $query = "SELECT * FROM user";
+                        $query = "SELECT * FROM user WHERE username!='$username'";
                         $result = $conn->query($query);
                         $users = $result->fetchAll();
                         foreach ($users as $user) {
