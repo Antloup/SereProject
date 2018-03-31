@@ -21,21 +21,16 @@ $query = "SELECT * FROM user WHERE username='$username' AND password='$password'
 
 $result = $conn->query($query);
 
-if (!$result) {
+if (!$result || empty($result->fetchAll())) {
     //Request failed
     $error = "Ooops, it failed somewhere...";
     header("Location:index.php?msg=$error");
     exit;
-} else if ($result->rowCount() == 1) {
+} else {
     //Authentication ok
     session_start();
     $_SESSION['username'] = $username;
     header("Location:account.php");
-    exit;
-} else {
-    //Authentication failed
-    $error = "Ooops, wrong password or username";
-    header("Location:index.php?msg=$error");
     exit;
 }
 

@@ -53,10 +53,15 @@ $username = $_SESSION['username'];
 
 <div class="container">
     <div class="section">
-
-
         <div class="row">
-            <div class="col offset-s1 s10 center-align">
+            <div class="col s6 center-align">
+                <h3>Personnal data</h3>
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col s6 center-align">
+                <h3>You may want to be friend with...</h3>
                 <div class="row">
 
                 </div>
@@ -67,6 +72,7 @@ $username = $_SESSION['username'];
     </div>
     <br><br>
 </div>
+
 
 <footer class="page-footer red">
     <div class="container">
