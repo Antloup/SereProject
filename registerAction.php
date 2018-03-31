@@ -1,39 +1,40 @@
 <?php
-	//$conn = new mysqli("localhost", "root", "mypsswd");
-	$conn = new mysqli("localhost", "root", "");
-	if ($conn->connect_error) {
-    		die("Connection to database failed: ");
+try {
+    $conn = new PDO('mysql:host=localhost;dbname=mydb', "root", "");
+} catch (PDOException $e) {
+    print "Error : " . $e->getMessage() . "<br/>";
+    die();
+}
+// Connected successfully
 
-	}
-	echo "Connected successfully";
-	
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$email = $_POST['email'];
-	$number = $_POST['number'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$email = $_POST['email'];
+$number = $_POST['number'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-	if(empty($first_name) || empty($last_name) || empty(username) || empty(password)){
-		$error = "Mhh, it looks like some fields were empty...";
-		header("Location:register.php?error=$error");
-		exit;
-	}
-	$query = "INSERT INTO mydb.user(first_name, last_name,email, number,username,password) VALUES ('$first_name', '$last_name','$email','$number','$username','$password')";
-	$result = $conn->query($query);
 
-	
-	if (!$result) {
-		//Request failed
-		$error = "Ooops, it failed somewhere...";
-		header("Location:register.php?error=$error");
-		exit;
-	}
-	else {
-		//Request ok
-		header("Location:index.php");
-		exit;
-	}
-	
+if (empty($first_name) || empty($last_name) || empty(username) || empty(password)) {
+    $error = "Mhh, it looks like some fields were empty...";
+    header("Location:register.php?msg=$error");
+    exit;
+}
+
+$query = "INSERT INTO mydb.user(first_name, last_name,email, number,username,password) VALUES ('$first_name', '$last_name','$email','$number','$username','$password')";
+$result = $conn->query($query);
+
+
+if (!$result) {
+    //Request failed
+    $error = "Ooops, it failed somewhere...";
+    header("Location:register.php?msg=$error");
+    exit;
+} else {
+    //Request ok
+    $msg = "You're now register !";
+    header("Location:index.php?msg=$msg");
+    exit;
+}
+
 ?>
