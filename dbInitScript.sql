@@ -7,10 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb`;
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
@@ -32,3 +29,16 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Default data
+-- -----------------------------------------------------
+
+USE `mydb` ;
+
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('TartufletteTheAdmin', 'H4314','tartuf@gmail.com','34572','admin','damnUgotme');
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('Alain', 'Terieur','Alain@gmail.com','012345','alain','mypassword');
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('Marcel', 'Dupont','Marcel@gmail.com','987654','marcel','heyyy:p');
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('Paul', 'Emploi','Paul@gmail.com','654534','paul','nopassword');
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('Gilles', 'Dubois','Gilles@gmail.com','654534','gilou','idoit4zelulz');
+INSERT INTO user(first_name, last_name,email, number,username,password) VALUES ('Anna', 'Conda','Anna@gmail.com','34572','anna','sacrebleu');

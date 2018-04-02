@@ -21,7 +21,9 @@ $query = "SELECT * FROM user WHERE username='$username' AND password='$password'
 
 $result = $conn->query($query);
 
-if (!$result || empty($result->fetchAll())) {
+$user = $result->fetch();
+
+if (!$result || empty($user)) {
     //Request failed
     $error = "Ooops, it failed somewhere...";
     header("Location:index.php?msg=$error");
@@ -29,7 +31,7 @@ if (!$result || empty($result->fetchAll())) {
 } else {
     //Authentication ok
     session_start();
-    $_SESSION['username'] = $username;
+    $_SESSION['username'] = $user['username'];
     header("Location:account.php");
     exit;
 }

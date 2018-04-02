@@ -97,8 +97,8 @@ try {
                         $users = $result->fetchAll();
                         foreach ($users as $user) {
                             echo "<tr>";
-                            echo "<td>" . $user['first_name'] . "</td>";
                             echo "<td>" . $user['username'] . "</td>";
+                            echo "<td>" . $user['first_name'] . "</td>";
                             echo "<td><button class=\"btn waves-effect waves-light\" name=\"action\" 
                                     onclick=\"M.toast({html: 'This functionnality is beyond the project area'})\">Add
                             </button></td>";
