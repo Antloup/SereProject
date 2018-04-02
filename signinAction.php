@@ -10,7 +10,7 @@ try {
 //Connected successfully
 
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = $_POST['password'];
 
 if (empty($username) || empty($password)) {
     $error = "Mhh, it looks like some fields were empty...";

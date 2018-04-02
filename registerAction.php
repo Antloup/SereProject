@@ -12,7 +12,7 @@ $last_name = $_POST['last_name'];
 $email = $_POST['email'];
 $number = $_POST['number'];
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = $_POST['password'];
 
 
 if (empty($first_name) || empty($last_name) || empty($username) || empty($password)) {

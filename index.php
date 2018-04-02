@@ -49,7 +49,7 @@
 
         <div class="row">
             <div class="col s6 center-align">
-                <h3>Connexion</h3>
+                <h3>Connection</h3>
                 <div class="row">
                     <form class="col s12" id="signin" action="signinAction.php" method="POST">
                         <div class="row">
